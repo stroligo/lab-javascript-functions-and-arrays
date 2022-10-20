@@ -42,22 +42,64 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numbers) {
   if (numbers.length === 0) return 0;
-  let sum = [0];
+  let sumNumbers = [0];
   for (i = 0; i < numbers.length; i++) {
-    sum[0] += numbers[i];
+    sumNumbers[0] += numbers[i];
   }
-  return sum[0];
+  return sumNumbers[0];
 }
 //sumNumbers(numbers);
 
-// Iteration #3.1 Bonus:
-function sum() {}
+// Iteration #3.2 Bonus:
+
+const mixedArr = [6, 12, "miami", 1, true, "barca", "200", "lisboa", 8, 10];
+
+function sum(mixedArr) {
+  // TEST RETURN
+  if (mixedArr.length === 0) return 0;
+  let sumNumbers = [0];
+
+  for (i = 0; i < mixedArr.length; i++) {
+    //TEST STRING
+    if (typeof mixedArr[i] == "string") {
+      sumNumbers[0] += mixedArr[i].length;
+    }
+    //TEST NUMBER
+    if (typeof mixedArr[i] == "number") {
+      sumNumbers[0] += mixedArr[i];
+    }
+    //TEST BOOLEAN
+    if (typeof mixedArr[i] == "boolean") {
+      if (mixedArr[i] == true) {
+        sumNumbers[0] += 1;
+      }
+      if (mixedArr[i] == false) {
+        sumNumbers[0] += 0;
+      }
+    }
+    //TEST OBJECT
+    if (typeof mixedArr[i] == "object") {
+      throw new Error("Unsupported data type sir or ma'am");
+    }
+  }
+  //console.log("CALC: " + sumNumbers[0]);
+  return sumNumbers[0];
+}
+sum(mixedArr);
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numbersAvg) {
+  if (numbersAvg.length === 0) return null;
+  let averageNumbers = [];
+  averageNumbers = sumNumbers(numbersAvg) / numbersAvg.length;
+
+  //console.log("AVERAGE: " + averageNumbers);
+  return averageNumbers;
+}
+averageNumbers(numbersAvg);
 
 // Level 2: Array of strings
 const wordsArr = [
@@ -73,10 +115,38 @@ const wordsArr = [
   "palace",
 ];
 
-function averageWordLength() {}
+function averageWordLength(wordsArr) {
+  if (wordsArr.length === 0) return null;
+  if (wordsArr.length === 1) return wordsArr[0].length;
+
+  let average = 0;
+
+  wordsArr.forEach((i) => {
+    average += i.length;
+  });
+
+  return average / wordsArr.length;
+}
+// console.log(averageWordLength(wordsArr));
 
 // Bonus - Iteration #4.1
-function avg() {}
+
+function avg(arr) {
+  if (arr.length === 0) return null;
+
+  let average = 0;
+
+  arr.forEach((el) => {
+    if (typeof el === "string") {
+      average += el.length;
+    }
+    if (typeof el !== "string") {
+      average += el;
+    }
+  });
+
+  return average / arr.length;
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
